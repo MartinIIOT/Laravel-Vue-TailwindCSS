@@ -19,14 +19,10 @@ jobs:
       - name: Update OS
         run: sudo apt update && sudo apt upgrade -y
           
-  test:
+  php-install:
       needs: build-os
       runs-on: ubuntu-latest
     
       steps:
-      - name: Set up Python Environment
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: Upgrade PIP
-        run: python -m pip install --upgrade pip
+      - name: PHP Install
+        run: sudo apt install --no-install-recommends php8.1 && sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath
